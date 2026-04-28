@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaña PliP — Agencia MAGIA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --plip-green: #00C27C;
+    --plip-green-dark: #008C5A;
+    --plip-green-pale: #E6F9F2;
+    --plip-dark: #0D1117;
+    --plip-dark2: #161C26;
+    --plip-mid: #1E2A3A;
+    --plip-light: #F4F7F5;
+    --plip-accent: #FFD166;
+    --plip-accent2: #FF6B6B;
+    --plip-text: #0D1117;
+    --plip-text-muted: #5A6A7A;
+    --plip-border: #E2E8E4;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Space Grotesk', sans-serif;
+    --display: 'Syne', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: #FAFBF9;
+    color: var(--plip-text);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  /* PORTADA */
+  .cover {
+    background: var(--plip-dark);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,124,0.25) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,209,102,0.12) 0%, transparent 70%);
+  }
+  .cover-eyebrow {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    margin-bottom: 24px;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .cover-title em {
+    color: var(--plip-green);
+    font-style: italic;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,194,124,0.15);
+    border: 1px solid rgba(0,194,124,0.3);
+    color: var(--plip-green);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  /* LAYOUT */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* SECTION HEADERS */
+  .section-number {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--plip-dark);
+  }
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--plip-green);
+    margin-bottom: 32px;
+  }
+
+  /* DARK SECTIONS */
+  .dark-section {
+    background: var(--plip-dark);
+    color: #fff;
+    padding: 80px 40px;
+  }
+  .dark-section .section-title { color: #fff; }
+  .dark-section p { color: rgba(255,255,255,0.75); }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--plip-border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--plip-green); }
+  .card-icon {
+    width: 40px; height: 40px;
+    background: var(--plip-green-pale);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--plip-dark);
+  }
+  .card p {
+    font-size: 13px;
+    color: var(--plip-text-muted);
+    line-height: 1.6;
+  }
+  .card-dark {
+    background: var(--plip-dark2);
+    border-color: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+  .card-dark h3 { color: #fff; }
+  .card-dark p { color: rgba(255,255,255,0.6); }
+  .card-dark .card-icon { background: rgba(0,194,124,0.15); }
+
+  /* INSIGHT BLOCK */
+  .insight-block {
+    background: var(--plip-dark);
+    border-left: 4px solid var(--plip-green);
+    border-radius: 0 16px 16px 0;
+    padding: 32px 40px;
+    margin: 32px 0;
+  }
+  .insight-block .quote {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-style: italic;
+    color: var(--plip-green);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .insight-block .attribution {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* BIG IDEA */
+  .big-idea {
+    background: var(--plip-green);
+    color: var(--plip-dark);
+    border-radius: 24px;
+    padding: 60px;
+    text-align: center;
+    margin: 40px 0;
+  }
+  .big-idea .label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+  .big-idea .headline {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .big-idea .sub {
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto;
+    opacity: 0.75;
+  }
+
+  /* CONCEPT PILL */
+  .concept-phrase {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--plip-green-pale);
+    color: var(--plip-green-dark);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 32px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--plip-green-pale);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--plip-green);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--plip-green);
+  }
+  .timeline-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: var(--plip-dark);
+  }
+  .timeline-text {
+    font-size: 14px;
+    color: var(--plip-text-muted);
+    line-height: 1.65;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--plip-border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--plip-green);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--plip-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* LIGA SYSTEM */
+  .liga-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .liga-card {
+    background: var(--plip-dark2);
+    border: 1px solid rgba(0,194,124,0.2);
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+  }
+  .liga-card .tag {
+    display: inline-block;
+    background: rgba(0,194,124,0.2);
+    color: var(--plip-green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .liga-card h3 {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .liga-card p, .liga-card li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+  .liga-card ul { padding-left: 18px; }
+  .liga-card li { margin-bottom: 4px; }
+
+  /* NOTIFICATION BUBBLES */
+  .notif-list { margin: 20px 0; }
+  .notif-bubble {
+    background: var(--plip-dark2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px 16px 16px 4px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    max-width: 380px;
+    color: #fff;
+  }
+  .notif-bubble .notif-app {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .notif-bubble .notif-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* DIVISION BADGES */
+  .divisions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .division-badge {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .division-badge.bronze { background: #3D2A18; color: #C8956C; border: 1px solid #5C3A22; }
+  .division-badge.silver { background: #1E2A35; color: #9EC5DE; border: 1px solid #2A3D50; }
+  .division-badge.gold { background: #2D2A10; color: #F0C040; border: 1px solid #4A4015; }
+  .division-badge.diamond { background: #1A1A3A; color: #A0A0FF; border: 1px solid #2A2A60; }
+
+  /* VIDEO SCRIPT */
+  .scene-block {
+    background: #fff;
+    border: 1px solid var(--plip-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .scene-header {
+    background: var(--plip-dark);
+    color: var(--plip-green);
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+  .scene-header span { color: rgba(255,255,255,0.4); }
+  .scene-body {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .scene-body .scene-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--plip-green);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .scene-body p {
+    font-size: 13px;
+    color: var(--plip-text-muted);
+    line-height: 1.6;
+  }
+  .scene-copy {
+    background: var(--plip-green-pale);
+    border-left: 3px solid var(--plip-green);
+    padding: 12px 16px;
+    margin-top: 12px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--plip-green-dark);
+    font-size: 14px;
+  }
+
+  /* REEL CARD */
+  .reel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .reel-card {
+    background: #fff;
+    border: 1px solid var(--plip-border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .reel-thumb {
+    height: 120px;
+    background: var(--plip-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .reel-thumb-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 56px;
+    opacity: 0.12;
+    color: var(--plip-green);
+  }
+  .reel-thumb .play-icon {
+    width: 44px; height: 44px;
+    background: var(--plip-green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .reel-thumb .play-icon::after {
+    content: '';
+    border-style: solid;
+    border-width: 8px 0 8px 16px;
+    border-color: transparent transparent transparent var(--plip-dark);
+    margin-left: 3px;
+  }
+  .reel-body { padding: 20px; }
+  .reel-body .reel-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    margin-bottom: 6px;
+  }
+  .reel-body h3 {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--plip-dark);
+  }
+  .reel-body p {
+    font-size: 12px;
+    color: var(--plip-text-muted);
+    line-height: 1.6;
+  }
+  .reel-body .reel-hook {
+    background: var(--plip-green-pale);
+    color: var(--plip-green-dark);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* OOH */
+  .ooh-card {
+    background: var(--plip-dark);
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .ooh-visual {
+    background: var(--plip-dark2);
+    border: 1px solid rgba(0,194,124,0.2);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1.3;
+    color: #fff;
+    position: relative;
+  }
+  .ooh-visual em { color: var(--plip-green); font-style: italic; }
+  .ooh-visual .ooh-sub {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 20px;
+    font-weight: 400;
+  }
+
+  /* MEDIA PHASES */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 32px 0;
+    border: 1px solid var(--plip-border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .phase-col {
+    padding: 28px 24px;
+    border-right: 1px solid var(--plip-border);
+  }
+  .phase-col:last-child { border-right: none; }
+  .phase-col.active { background: var(--plip-dark); color: #fff; }
+  .phase-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--plip-green);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .phase-name {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase-col:not(.active) .phase-name { color: var(--plip-dark); }
+  .phase-col.active .phase-name { color: #fff; }
+  .phase-weeks {
+    font-size: 12px;
+    color: var(--plip-text-muted);
+    margin-bottom: 16px;
+  }
+  .phase-col.active .phase-weeks { color: rgba(255,255,255,0.5); }
+  .phase-channels {
+    list-style: none;
+    padding: 0;
+  }
+  .phase-channels li {
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--plip-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .phase-col.active .phase-channels li {
+    border-color: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+  }
+  .phase-channels li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--plip-green);
+    flex-shrink: 0;
+  }
+
+  /* KPI TABLE */
+  .kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 14px;
+  }
+  .kpi-table th {
+    background: var(--plip-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .kpi-table th:first-child { border-radius: 12px 0 0 0; }
+  .kpi-table th:last-child { border-radius: 0 12px 0 0; }
+  .kpi-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--plip-border);
+    color: var(--plip-text-muted);
+    vertical-align: top;
+  }
+  .kpi-table tr:last-child td { border-bottom: none; }
+  .kpi-table td:first-child {
+    font-weight: 600;
+    color: var(--plip-dark);
+  }
+  .kpi-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--plip-green-pale);
+    color: var(--plip-green-dark);
+  }
+
+  /* CRONOGRAMA */
+  .crono-bar {
+    margin: 8px 0;
+  }
+  .crono-label {
+    font-size: 13px;
+    color: var(--plip-text-muted);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .crono-track {
+    background: #eee;
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .crono-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--plip-green);
+  }
+  .crono-fill.phase2 { background: var(--plip-accent); }
+  .crono-fill.phase3 { background: var(--plip-accent2); }
+
+  /* BUDGET PIE VISUAL */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 32px 0;
+    align-items: start;
+  }
+  .budget-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--plip-border);
+  }
+  .budget-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .budget-name {
+    flex: 1;
+    font-size: 14px;
+    color: var(--plip-dark);
+  }
+  .budget-pct {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--plip-dark);
+  }
+
+  /* KEY VISUAL */
+  .key-visual-box {
+    background: var(--plip-dark);
+    border-radius: 24px;
+    padding: 60px;
+    margin: 32px 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .key-visual-box::before {
+    content: '"Siempre es poquito..."';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 11px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  .kv-coins {
+    display: flex;
+    justify-content: center;
+    gap: -4px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .kv-coin {
+    background: rgba(0,194,124,0.15);
+    border: 1px solid rgba(0,194,124,0.3);
+    color: var(--plip-green);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .kv-headline {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .kv-headline em {
+    color: var(--plip-green);
+    font-style: italic;
+  }
+  .kv-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+  }
+
+  /* BTL */
+  .btl-steps {
+    counter-reset: btl;
+    margin: 24px 0;
+  }
+  .btl-step {
+    counter-increment: btl;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+  .btl-step-num {
+    width: 40px; height: 40px;
+    background: var(--plip-green);
+    color: var(--plip-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+    content: counter(btl);
+  }
+  .btl-step-num::after { content: counter(btl); }
+  .btl-step-body h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--plip-dark);
+  }
+  .btl-step-body p {
+    font-size: 13px;
+    color: var(--plip-text-muted);
+    line-height: 1.6;
+  }
+
+  /* CAROUSEL */
+  .carousel-slide {
+    background: #fff;
+    border: 1px solid var(--plip-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .slide-num-badge {
+    min-width: 40px; height: 40px;
+    background: var(--plip-dark);
+    color: var(--plip-green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .carousel-slide h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--plip-dark);
+  }
+  .carousel-slide p {
+    font-size: 13px;
+    color: var(--plip-text-muted);
+    line-height: 1.6;
+  }
+  .carousel-slide .slide-copy {
+    font-style: italic;
+    color: var(--plip-green-dark);
+    background: var(--plip-green-pale);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--plip-dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+  }
+  footer span { color: var(--plip-green); }
+
+  /* TABLE OF CONTENTS */
+  .toc { margin: 40px 0; }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--plip-border);
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+  }
+  .toc-item:hover { color: var(--plip-green); }
+  .toc-item-num {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--plip-green);
+    min-width: 28px;
+  }
+  .toc-item-title {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .toc-item-arrow {
+    color: var(--plip-text-muted);
+    font-size: 12px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .cover { padding: 60px 24px; }
+    .page { padding: 60px 24px; }
+    .liga-grid, .scene-body, .ooh-card, .phase-grid, .budget-grid {
+      grid-template-columns: 1fr;
+    }
+    .big-idea { padding: 40px 24px; }
+  }
+
+  /* PRINT */
+  @media print {
+    .cover, .dark-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-eyebrow">Boom Creativo 2026 — Agencia MAGIA</div>
+  <div class="cover-badge">★ Campaña Integral</div>
+  <h1 class="cover-title">La Liga<br>del <em>Poquito</em></h1>
+  <p class="cover-subtitle">Campaña de lanzamiento para PliP — la app que te muestra en qué se te va la plata sin que tengas que hacer nada.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>Cliente</label><span>PliP — Finanzas Personales</span></div>
+    <div class="cover-meta-item"><label>Agencia</label><span>MAGIA</span></div>
+    <div class="cover-meta-item"><label>Universidad</label><span>Politécnico Grancolombiano</span></div>
+    <div class="cover-meta-item"><label>Entrega</label><span>29 de abril, 2026</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ ÍNDICE ══ -->
+<div class="page">
+  <p class="section-number">Contenido</p>
+  <h2 class="section-title">Tabla de contenido</h2>
+  <div class="toc">
+    <a class="toc-item" href="#s1"><span class="toc-item-num">01</span><span class="toc-item-title">Delimitación y Objetivos</span><span class="toc-item-arrow">↓</span></a>
+    <a class="toc-item" href="#s2"><span class="toc-item-num">02</span><span class="toc-item-title">Insight e Idea Central</span><span class="toc-item-arrow">↓</span></a>
+    <a class="toc-item" href="#s3"><span class="toc-item-num">03</span><span class="toc-item-title">Activación de la Idea — Creatividad, Medios y Piezas</span><span class="toc-item-arrow">↓</span></a>
+    <a class="toc-item" href="#s4"><span class="toc-item-num">04</span><span class="toc-item-title">Medición y Resultados Esperados</span><span class="toc-item-arrow">↓</span></a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SECCIÓN 1 ══ -->
+<div id="s1" class="dark-section">
+  <div style="max-width:960px; margin:0 auto; padding: 0 40px;">
+    <p class="section-number">Sección 01 — 25%</p>
+    <h2 class="section-title">Delimitación<br>y Objetivos</h2>
+  </div>
+</div>
+
+<div class="page">
+
+  <p class="section-number">1.1 Contexto y situación del mercado</p>
+  <div class="section-divider"></div>
+
+  <p style="margin-bottom: 20px; max-width: 720px;">El mercado de finanzas personales en Colombia está creciendo empujado por la digitalización, pero sigue dominado por herramientas que los jóvenes perciben como complejas, aburridas o "para adultos que ya tienen todo claro". Aplicaciones como Monai, Finvot o Spendee existen, pero ninguna ha logrado posicionarse culturalmente entre los 18-25 años porque su comunicación huele a consejo financiero de banco.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>Digitalización acelerada</h3>
+      <p>Nequi, Rappi Pay, Uber y servicios de delivery generan docenas de facturas electrónicas al mes sin que el usuario lo note. Los datos ya existen — nadie los está aprovechando.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📉</div>
+      <h3>Pauta tradicional, rendimientos decrecientes</h3>
+      <p>Meta y Google aumentan costos de adquisición cada año. Las apps de finanzas que dependen de pauta pagan más por menos. PliP necesita una campaña que genere cultura, no solo clics.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎮</div>
+      <h3>La generación que juega, compite y comparte</h3>
+      <p>Los jóvenes colombianos de 18-25 usan Duolingo por las rachas, no por aprender inglés. La gamificación ya es un comportamiento, no una propuesta novedosa — solo hay que aplicarla bien.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤷</div>
+      <h3>El problema invisible</h3>
+      <p>El 78% de los jóvenes cree que gasta razonablemente bien. Sin embargo, la mayoría no llega a fin de mes con plata. El problema no es querer gastar mal — es no ver que se está gastando mal.</p>
+    </div>
+  </div>
+
+  <p class="section-number" style="margin-top: 60px;">1.2 Abordaje del brief e información relevante</p>
+  <div class="section-divider"></div>
+
+  <p style="margin-bottom: 20px; max-width: 720px;">El brief de PliP identifica con precisión que el problema no es funcional sino de percepción: el control de gastos se siente como una tarea de adulto responsable, aburrido y meticuloso. Lo que el brief no dice explícitamente, pero que nosotros identificamos como el punto de palanca, es que los jóvenes <em>sí</em> tienen comportamientos de automonitoreo — solo que en otros contextos (pasos en el celular, calorías, rachas de apps, followers). La solución no es cambiar la actitud hacia el dinero; es <strong>habitar el territorio donde ya existe esa actitud</strong>.</p>
+
+  <div class="insight-block">
+    <div class="quote">"Los jóvenes no odian monitorear sus hábitos. Odian que les recuerden que tienen que monitorear su plata."</div>
+    <div class="attribution">Observación estratégica — Agencia MAGIA</div>
+  </div>
+
+  <p style="margin-top: 24px; margin-bottom: 20px; max-width: 720px;">Información adicional relevante: estudios de comportamiento financiero juvenil en Colombia indican que el gasto promedio en "poquitos" (transporte, snacks, antojos, domicilios) puede representar entre el 35% y el 45% del ingreso mensual de un joven de primer empleo. Son gastos invisibles — no doelen en el momento, pero suman.</p>
+
+  <p class="section-number" style="margin-top: 60px;">1.3 Reto estratégico</p>
+  <div class="section-divider"></div>
+
+  <div class="big-idea" style="background: var(--plip-dark); color: #fff; border: 1px solid rgba(0,194,124,0.3);">
+    <div class="label" style="color: var(--plip-green);">Reto central</div>
+    <div class="headline" style="color: #fff;">¿Cómo hacer que los jóvenes <em style="color: var(--plip-green);">quieran</em> ver en qué se les va la plata?</div>
+    <p class="sub" style="color: rgba(255,255,255,0.6);">No se trata de educarlos. Se trata de que PliP se convierta en algo que da ganas de usar — no de deber usar.</p>
+  </div>
+
+  <p style="margin-top: 24px; max-width: 720px;">El reto es crítico porque PliP tiene una ventaja técnica real (automatización de facturas electrónicas con IA) que sus competidores no tienen, pero esa ventaja es imperceptible si el usuario nunca descarga la app. El primer paso no es la retención — es la motivación inicial para probar. Y esa motivación no viene de explicar cómo funciona la app, sino de hacerle sentir al usuario que el problema de los poquitos lo afecta directamente.</p>
+
+  <p class="section-number" style="margin-top: 60px;">1.4 Objetivos de marketing y comunicación</p>
+  <div class="section-divider"></div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-number">+30%</span>
+      <span class="stat-label">Descargas en 3 meses</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">+20%</span>
+      <span class="stat-label">Tasa de conversión impacto→descarga</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">+25%</span>
+      <span class="stat-label">Reconocimiento de marca</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">−15%</span>
+      <span class="stat-label">Costo por adquisición (CPA)</span>
+    </div>
+  </div>
+
+  <p style="margin-top: 8px; font-size: 13px; color: var(--plip-text-muted); max-width: 720px;">Los objetivos de comunicación apuntan a lograr primero identificación ("eso me pasa a mí"), luego curiosidad por la solución, y finalmente acción (descarga). El reconocimiento de marca es el objetivo a más largo plazo pero el más valioso para reducir CPA sostenidamente.</p>
+
+  <p class="section-number" style="margin-top: 60px;">1.5 Público objetivo</p>
+  <div class="section-divider"></div>
+
+  <p style="margin-bottom: 24px; max-width: 720px;">El foco principal de la campaña es el segmento 18–25 años, personas en prácticas, primer empleo o que reciben mesada, con acceso a servicios digitales de pago. Son el segmento con mayor potencial de viralidad y de adopción temprana.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">👩‍💻</div>
+      <h3>El practicante recién pagado</h3>
+      <p>Recibe su primer salario, celebra, compra cositas. A fin de mes no entiende por qué ya no le queda nada. No tiene deudas grandes — tiene 40 "poquitos" que sumaron.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛵</div>
+      <h3>El freelance que vive de pedido en pedido</h3>
+      <p>Ingresos variables, gastos fijos + domicilios diarios + Uber ocasional. Sabe que debería organizarse pero lo pospone porque "cuando tenga más plata, ahí sí".</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>El universitario de mesada</h3>
+      <p>Recibe mesada fija, Nequi activado, Rappi instalado. Siempre llega al viernes sin plata y dice que fue porque "hubo muchos gastos". En realidad fueron poquitos de 8 mil.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px; max-width: 720px;"><strong>Comportamientos determinantes:</strong> usan apps diariamente, compiten con amigos en juegos y retos, comparten resultados en redes, se identifican con memes de finanzas personales, tienen vergüenza social de gastar mal más que miedo real. La tensión clave no es pereza — es racionalización: "es que 10 mil no son nada, para qué los voy a anotar."</p>
+
+</div>
+
+<!-- ═══════════════════════════════════════ SECCIÓN 2 ══ -->
+<div id="s2" class="dark-section" style="margin-top: 0;">
+  <div style="max-width:960px; margin:0 auto; padding: 0 40px;">
+    <p class="section-number">Sección 02 — 25%</p>
+    <h2 class="section-title">Insight e<br>Idea Central</h2>
+  </div>
+</div>
+
+<div class="page">
+
+  <p class="section-number">2.1 Hallazgos relevantes</p>
+  <div class="section-divider"></div>
+
+  <div class="card-grid" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>Hallazgo de usuario</h3>
+      <p>Los jóvenes minimizan activamente los gastos pequeños. No es inconsciencia — es una defensa psicológica. Si el gasto "no duele", no hay que procesarlo. Pero esa suma sí duele cuando llega a fin de mes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Hallazgo de comportamiento</h3>
+      <p>Los mismos jóvenes que dicen "no tengo tiempo de anotar mis gastos" llevan 200 días de racha en Duolingo. El monitoreo no les aburre — les aburre el monitoreo que no tiene recompensa ni competencia.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>Hallazgo social</h3>
+      <p>La conversación sobre plata entre jóvenes existe pero en clave de humor: "yo sí me quebré", "la quincena duró 2 días", memes de billetera vacía. El tema no es tabú — el moralismo financiero sí lo es.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Hallazgo de categoría</h3>
+      <p>Las apps de finanzas personales actuales comunican beneficio racional: "organiza tus gastos", "ahorra más". Ninguna comunica consecuencia emocional ni usa el lenguaje con el que los jóvenes hablan de plata entre ellos.</p>
+    </div>
+  </div>
+
+  <p class="section-number">2.2 Insight</p>
+  <div class="section-divider"></div>
+
+  <div class="insight-block">
+    <div class="quote">"Sé que debería organizarme, pero como los gastos son chiquitos, no los siento reales. El problema es que de repente ya no hay nada y no sé ni por qué."</div>
+    <div class="attribution">Insight estratégico — La acumulación invisible</div>
+  </div>
+
+  <p style="margin-top: 24px; margin-bottom: 24px; max-width: 720px;">El insight no está en que los jóvenes no quieran organizarse — está en que el problema financiero es literalmente invisible para ellos porque ocurre de a poquitos. El mecanismo psicológico se llama "pérdida por goteo": ningún gasto individual parece significativo, entonces ninguno activa la alarma. Cuando la alarma suena (fin de mes, quincena agotada), ya es tarde para actuar.</p>
+
+  <p style="max-width: 720px;">PliP resuelve exactamente eso — no porque obligue a anotar, sino porque <em>hace visible lo invisible de forma automática</em>. La campaña debe hacer que ese momento de revelación ("espera, ¿cuánto me gasté en domicilios?") ocurra antes de descargar la app — en los contenidos, en las activaciones, en la experiencia.</p>
+
+  <p class="section-number" style="margin-top: 60px;">2.3 Concepto central</p>
+  <div class="section-divider"></div>
+
+  <div class="concept-phrase">Concepto</div>
+
+  <div class="big-idea">
+    <div class="label">Idea que articula toda la campaña</div>
+    <div class="headline">Siempre es poquito...<br>hasta que ya no hay nada.</div>
+    <p class="sub">El concepto funciona porque es espejo: el usuario se reconoce en el problema antes de que se le ofrezca la solución. Nadie se siente atacado — todos se sienten identificados.</p>
+  </div>
+
+  <p style="max-width: 720px; margin-top: 24px;">Este concepto tiene tensión narrativa natural: empieza minimizando (como lo hace el usuario) y termina revelando la consecuencia (que también conoce). No hay regaño, no hay moralismo — hay identificación y entonces, curiosidad por la solución. La Big Idea que activa esto en campaña es <strong>La Liga del Poquito</strong>: un sistema gamificado donde controlar gastos se convierte en un juego social.</p>
+
+</div>
+
+<!-- ═══════════════════════════════════════ SECCIÓN 3 ══ -->
+<div id="s3" class="dark-section">
+  <div style="max-width:960px; margin:0 auto; padding: 0 40px;">
+    <p class="section-number">Sección 03 — 25%</p>
+    <h2 class="section-title">Activación<br>de la Idea</h2>
+  </div>
+</div>
+
+<div class="page">
+
+  <p class="section-number">3.1 Estrategia creativa — La Liga del Poquito</p>
+  <div class="section-divider"></div>
+
+  <p style="margin-bottom: 24px; max-width: 720px;">La Liga del Poquito es un sistema de gamificación dentro de PliP que convierte el control de gastos en un juego social. La campaña no solo comunica la existencia de este sistema — la campaña <em>es</em> el sistema. Cada pieza, cada activación y cada contenido es una entrada a la Liga.</p>
+
+  <h3 style="font-family: var(--display); font-size: 18px; font-weight: 700; margin: 32px 0 16px; color: var(--plip-dark);">Sistema de la Liga del Poquito — Mecánica completa</h3>
+
+  <div class="liga-grid">
+    <div class="liga-card">
+      <div class="tag">Reglas base</div>
+      <h3>¿Cómo funciona?</h3>
+      <ul>
+        <li>PliP lee tus facturas electrónicas automáticamente (sin tocar nada)</li>
+        <li>Cada categoría de gasto tiene un presupuesto semanal que tú defines</li>
+        <li>Cuando no te pasas del presupuesto, sumas puntos a la Liga</li>
+        <li>Invitas amigos, compiten en ranking semanal</li>
+        <li>Cada semana sin pasarte es una racha — y las rachas suman multiplicadores</li>
+      </ul>
+    </div>
+    <div class="liga-card">
+      <div class="tag">Rachas y multiplicadores</div>
+      <h3>Mecánica de streaks</h3>
+      <ul>
+        <li><strong style="color: var(--plip-green);">1–4 semanas:</strong> racha activa, badge "Poquito Consciente"</li>
+        <li><strong style="color: var(--plip-green);">5–8 semanas:</strong> multiplicador x2, badge "Controlador"</li>
+        <li><strong style="color: var(--plip-green);">9–12 semanas:</strong> multiplicador x3, badge "Liga del Poquito"</li>
+        <li>Perder la racha → solo cae el multiplicador, no los puntos acumulados (reduce fricción)</li>
+        <li>Puedes "recuperar racha" una vez al mes con comodín</li>
+      </ul>
+    </div>
+    <div class="liga-card">
+      <div class="tag">Rankings y divisiones</div>
+      <h3>Estructura competitiva</h3>
+      <div class="divisions" style="margin-top: 12px;">
+        <span class="division-badge bronze">🥉 Bronce — Poquito Rookie</span>
+        <span class="division-badge silver">🥈 Plata — Poquito Pro</span>
+        <span class="division-badge gold">🥇 Oro — Poquito Elite</span>
+        <span class="division-badge diamond">💎 Diamante — Liga del Poquito</span>
+      </div>
+      <p style="margin-top: 8px;">Ranking semanal entre amigos + ranking nacional por ciudad. Los top 10 de cada ciudad cada mes compiten por premios reales.</p>
+    </div>
+    <div class="liga-card">
+      <div class="tag">Recompensas</div>
+      <h3>Incentivos reales</h3>
+      <ul>
+        <li>Descuentos en aliados: Rappi, apps de streaming, cafeterías</li>
+        <li>Recompensas digitales: fondos de pantalla exclusivos, badges animados</li>
+        <li>Top mensuales: bonos en Nequi, experiencias, merchandise PliP</li>
+        <li>Los de división Diamante acceden a "La Sala del Poquito": contenido exclusivo de finanzas en lenguaje joven</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family: var(--display); font-size: 18px; font-weight: 700; margin: 40px 0 16px; color: var(--plip-dark);">Notificaciones — Copy real</h3>
+  <p style="margin-bottom: 16px; font-size: 13px; color: var(--plip-text-muted);">Las notificaciones son el corazón del sistema. Tono: amigo que te avisa, no app que te regaña.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">Ey, llevas $47.000 en domicilios esta semana. Tu presupuesto era $40.000 👀 ¿Seguimos?</div>
+    </div>
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">¡Racha de 5 semanas! Ya eres Poquito Pro. Camilo te está persiguiendo en el ranking 👊</div>
+    </div>
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">Esta semana gastaste $8.000 menos que la anterior. Son chetos, sí. Pero chetos que se acumulan ✅</div>
+    </div>
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">Lunes. Semana nueva. Todos empiezan de 0. ¿Te animas a cerrar esta semana limpio/a?</div>
+    </div>
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">Valentina te ganó en el ranking de esta semana por $3.200. Textualmente: poquito. ¿La alcanzas?</div>
+    </div>
+    <div class="notif-bubble">
+      <div class="notif-app">PliP</div>
+      <div class="notif-text">PliP detectó un gasto de $6.500 en rappi. Llevas $94.000 este mes en domicilios. Datos, no juicio 🤷</div>
+    </div>
+  </div>
+
+  <!-- ════ KEY VISUAL ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.2 Key Visual</p>
+  <div class="section-divider"></div>
+
+  <div class="key-visual-box">
+    <div class="kv-coins">
+      <span class="kv-coin">Cheto de 3k</span>
+      <span class="kv-coin">Uber de 8k</span>
+      <span class="kv-coin">Rappi de 12k</span>
+      <span class="kv-coin">Café de 6k</span>
+      <span class="kv-coin">Snack de 4k</span>
+      <span class="kv-coin">Boleta de 25k</span>
+    </div>
+    <div class="kv-headline">Siempre es <em>poquito</em>…<br>hasta que ya no hay nada.</div>
+    <p class="kv-sub">PliP — porque los poquitos sí cuentan.</p>
+  </div>
+
+  <p style="max-width: 720px; margin-top: 20px;">El key visual es una acumulación de etiquetas de gastos pequeños, cada una inofensiva, que flotan o caen sobre un fondo oscuro. La suma total aparece en grande al final: "¿Y eso cuánto da?" La paleta es oscura con el verde PliP como el único color brillante — porque la claridad en el caos es exactamente lo que ofrece la app. El claim ancla todo: <em>"Siempre es poquito... hasta que ya no hay nada."</em></p>
+
+  <!-- ════ PIEZAS ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.3 Piezas clave — Video principal</p>
+  <div class="section-divider"></div>
+  <p style="margin-bottom: 24px; font-size: 13px; color: var(--plip-text-muted);">Guión completo por escenas — Video :60s para redes / :30s para pauta</p>
+
+  <div class="scene-block">
+    <div class="scene-header">Escena 01 — Apertura <span>0:00 – 0:08</span></div>
+    <div class="scene-body">
+      <div>
+        <div class="scene-label">Visual</div>
+        <p>Plano detalle: manos de una chica pagando con Nequi en una tienda. Compra un café de 4.500. Sonríe. Fondo real, cotidiano, Bogotá o Medellín.</p>
+      </div>
+      <div>
+        <div class="scene-label">Audio</div>
+        <p>Sin música aún. Solo ambiente. Voz en off, tono casual, casi susurrado:</p>
+        <div class="scene-copy">"Es que 4.500... no son nada."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">Escena 02 — Acumulación <span>0:08 – 0:22</span></div>
+    <div class="scene-body">
+      <div>
+        <div class="scene-label">Visual</div>
+        <p>Secuencia rápida, montaje tipo TikTok: domicilio llegando, Uber en el celular, snack en tienda, rumba entrada, apps descargadas. Cada vez aparece el monto en pantalla, pequeño, casi invisible.</p>
+      </div>
+      <div>
+        <div class="scene-label">Audio</div>
+        <p>Voz misma persona, repetitivo, como mantra:</p>
+        <div class="scene-copy">"Es que 8 mil no son nada. Es que 12 mil no son nada. Es que 6 mil no son nada. Es que 3 mil no son nada..."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">Escena 03 — La revelación <span>0:22 – 0:38</span></div>
+    <div class="scene-body">
+      <div>
+        <div class="scene-label">Visual</div>
+        <p>Pantalla oscura. Los montos se reorganizan solos, como si la app los estuviera procesando. El total aparece de golpe en verde brillante: "$347.000". La chica lo mira con los ojos abiertos.</p>
+      </div>
+      <div>
+        <div class="scene-label">Audio</div>
+        <p>Pausa. Silencio un segundo. Luego:</p>
+        <div class="scene-copy">"Siempre es poquito... hasta que ya no hay nada."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">Escena 04 — Solución / Liga <span>0:38 – 0:52</span></div>
+    <div class="scene-body">
+      <div>
+        <div class="scene-label">Visual</div>
+        <p>Interface de PliP: gastos organizados automáticamente, gráfica clara, badge de "Liga del Poquito". La chica muestra el celular a su amiga. Las dos ríen comparando su ranking.</p>
+      </div>
+      <div>
+        <div class="scene-label">Audio</div>
+        <p>Música entra suave, positiva pero no cuñera:</p>
+        <div class="scene-copy">"PliP registra tus gastos solo, te muestra en qué se te va la plata y te mete a la Liga del Poquito. Compite. Aprende. Sin anotar nada."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-block">
+    <div class="scene-header">Escena 05 — Cierre <span>0:52 – 1:00</span></div>
+    <div class="scene-body">
+      <div>
+        <div class="scene-label">Visual</div>
+        <p>Logo PliP. Claim. QR de descarga. Fondo oscuro con puntos de luz que se parecen a monedas cayendo, muy sutil.</p>
+      </div>
+      <div>
+        <div class="scene-label">Audio</div>
+        <p>Voz en off + tagline:</p>
+        <div class="scene-copy">"PliP. Porque los poquitos sí cuentan."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ REELS/TIKTOKS ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.3 Piezas clave — Reels / TikToks</p>
+  <div class="section-divider"></div>
+
+  <div class="reel-grid">
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">💸</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 01</div>
+        <h3>"¿A eso le llamas gastar poco?"</h3>
+        <p>Una persona le cuenta a cámara que "básicamente no gasta nada". PliP muestra su dashboard en tiempo real. El contraste es el remate. Formato: cámara frontal + pantalla dividida.</p>
+        <div class="reel-hook">"Yo no gasto mucho... deja yo chequeo PliP."</div>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">🏆</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 02</div>
+        <h3>"Mi amiga me está ganando en la Liga"</h3>
+        <p>Alguien enojado (en broma) porque su amiga va primero en el ranking semanal de La Liga del Poquito. Muestra la pantalla competitiva. Formato: reacción a cámara, tono humor.</p>
+        <div class="reel-hook">"Valentina me ganó por $3.200. Literalmente poquito. Esto es personal."</div>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">📊</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 03</div>
+        <h3>El "wrapped" financiero</h3>
+        <p>Tipo Spotify Wrapped: "Tu mes en poquitos". Cuántos domicilios, cuántos cafés, cuántos taxis. El número final siempre sorprende. Formato: motion graphics + narración.</p>
+        <div class="reel-hook">"PliP dice que este mes hice 23 pedidos de domicilio. Yo digo que son datos falsos."</div>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">🤐</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 04</div>
+        <h3>"Tipos de gastos que nadie cuenta"</h3>
+        <p>Lista entretenida de los gastos que "no son gastos": el "poquito" de la cafetería, la suscripción olvidada, el Uber "porque llovió". PliP los detecta todos. Formato: texto animado + voiceover gracioso.</p>
+        <div class="reel-hook">"El 'aprovecho que ya llegué' es oficialmente una categoría de gasto."</div>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">🔥</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 05</div>
+        <h3>"Racha de 30 días — lo que aprendí"</h3>
+        <p>Testimonio real (o recreado) de alguien que completó un mes en La Liga. Qué cambió, sin dramatismo. No es "ahorré una casa" — es "por fin entendí en qué se me iba". Formato: talking head, conversacional.</p>
+        <div class="reel-hook">"Llevo 30 días en La Liga del Poquito y resulta que yo sí gasto en cositas."</div>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-thumb" style="background: #0D1117;">
+        <div class="reel-thumb-bg">👥</div>
+        <div class="play-icon"></div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-num">Reel 06</div>
+        <h3>"Reto: ¿quién gana la Liga esta semana?"</h3>
+        <p>Reto dueto: dos personas que se invitan mutuamente a la Liga, documentan la semana en TikTok, revelan resultados el domingo. Formato UGC activable por comunidad.</p>
+        <div class="reel-hook">"Te reto a la Liga del Poquito. 7 días. El que pierda, paga el café."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ CARRUSELES ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.3 Piezas clave — Carruseles</p>
+  <div class="section-divider"></div>
+  <p style="margin-bottom: 20px; font-size: 13px; color: var(--plip-text-muted);">Carrusel 1: "¿Cuánto suman tus poquitos?" — 6 slides, formato Instagram/LinkedIn</p>
+
+  <div class="carousel-slide">
+    <div class="slide-num-badge">1</div>
+    <div>
+      <h4>Portada — Gancho</h4>
+      <p>Fondo oscuro, tipografía grande. Una sola pregunta que genera curiosidad.</p>
+      <span class="slide-copy">"Jurarías que no gastas mucho. Desliza y compruébalo."</span>
+    </div>
+  </div>
+  <div class="carousel-slide">
+    <div class="slide-num-badge">2</div>
+    <div>
+      <h4>El café diario</h4>
+      <p>Visual minimalista: taza de café. Cálculo: 5.000 × 22 días = 110.000 al mes. Tono: revelador, sin drama.</p>
+      <span class="slide-copy">"El café que 'no cuenta'. $5.000 al día. Al mes: $110.000."</span>
+    </div>
+  </div>
+  <div class="carousel-slide">
+    <div class="slide-num-badge">3</div>
+    <div>
+      <h4>El Uber "porque llovió"</h4>
+      <p>Mismo formato. 12.000 × 8 veces al mes = 96.000. Humor en el claim.</p>
+      <span class="slide-copy">"El Uber que pediste porque llovió... 8 veces. $96.000."</span>
+    </div>
+  </div>
+  <div class="carousel-slide">
+    <div class="slide-num-badge">4</div>
+    <div>
+      <h4>El domicilio de "antojo"</h4>
+      <p>Igual. 22.000 × 6 = 132.000. El claim juega con la minimización.</p>
+      <span class="slide-copy">"Era solo un antojito. Seis veces. $132.000."</span>
+    </div>
+  </div>
+  <div class="carousel-slide">
+    <div class="slide-num-badge">5</div>
+    <div>
+      <h4>La suma total — Revelación</h4>
+      <p>Solo el número. Grande. Verde. Sin palabras adicionales en el visual.</p>
+      <span class="slide-copy">"$338.000. Solo en 'poquitos'. ¿Y tú cuánto?</span>
+    </div>
+  </div>
+  <div class="carousel-slide">
+    <div class="slide-num-badge">6</div>
+    <div>
+      <h4>La solución — PliP + CTA</h4>
+      <p>Interface de la app. Beneficio claro. Llamado a descarga + La Liga.</p>
+      <span class="slide-copy">"PliP lo detecta todo. Tú solo juegas la Liga y aprendes. Descarga gratis."</span>
+    </div>
+  </div>
+
+  <!-- ════ OOH ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.3 Piezas clave — OOH</p>
+  <div class="section-divider"></div>
+
+  <div class="ooh-card">
+    <div>
+      <div class="tag" style="display: inline-block; background: rgba(0,194,124,0.2); color: var(--plip-green); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px;">Valla / Metro / Mupis</div>
+      <h3 style="font-family: var(--display); font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 12px;">Concepto OOH: La acumulación visible</h3>
+      <p style="color: rgba(255,255,255,0.65); font-size: 14px; line-height: 1.7; margin-bottom: 20px;">Las piezas OOH funcionan como "recibos gigantes". Muestran gastos pequeños reales de una ciudad específica (Bogotá, Medellín, Cali) acumulados en una lista que termina en un total sorprendente. Sin explicaciones. El lector hace la conexión solo.</p>
+      <p style="color: rgba(255,255,255,0.65); font-size: 14px; line-height: 1.7;">Ubicaciones estratégicas: cerca de universidades, en Transmilenio/Metro, zonas de food trucks, afuera de centros comerciales donde los jóvenes circulan.</p>
+    </div>
+    <div>
+      <div class="ooh-visual">
+        <div style="text-align: left; font-family: var(--sans); font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px;">Medellín, semana promedio</div>
+        <div style="font-family: var(--sans); font-size: 14px; color: rgba(255,255,255,0.7); text-align: left; line-height: 2;">
+          Café ..................... $5.000<br>
+          Rappi ................. $22.000<br>
+          Uber ................... $9.500<br>
+          Snack .................. $3.500<br>
+          Streaming ......... $17.000<br>
+          Antojo ............... $14.000
+        </div>
+        <div style="border-top: 1px solid rgba(0,194,124,0.3); margin-top: 20px; padding-top: 20px; font-family: var(--display); font-size: 32px; font-weight: 800; color: var(--plip-green);">$71.000</div>
+        <div class="ooh-sub" style="margin-top: 4px; font-size: 12px; text-align: center; color: rgba(255,255,255,0.4);">Solo en "poquitos". Esta semana.</div>
+        <div style="margin-top: 24px; font-family: var(--serif); font-size: 18px; color: #fff; line-height: 1.3;"><em>¿Los viste venir?</em><br><span style="font-family: var(--sans); font-size: 13px; color: var(--plip-green);">PliP sí los vio.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ BTL ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.3 Piezas clave — Activación BTL</p>
+  <div class="section-divider"></div>
+  <p style="margin-bottom: 24px; max-width: 720px;">Nombre de la activación: <strong>"El Stand del Poquito"</strong> — activación presencial en universidades y eventos de jóvenes.</p>
+
+  <div class="btl-steps">
+    <div class="btl-step">
+      <div class="btl-step-num"></div>
+      <div class="btl-step-body">
+        <h4>Entrada: La pregunta incómoda</h4>
+        <p>Un promotor pregunta a los que pasan: "¿Cuánto crees que gastas en poquitos a la semana?" La persona dice un número. Se registra en una pizarra pública.</p>
+      </div>
+    </div>
+    <div class="btl-step">
+      <div class="btl-step-num"></div>
+      <div class="btl-step-body">
+        <h4>El scan de facturas en vivo</h4>
+        <p>PliP accede (con permiso) a los últimos movimientos de Nequi o correo de la persona y muestra el resumen en una pantalla. Solo 5 minutos. El total aparece en grande en una pantalla pública (anonimizado).</p>
+      </div>
+    </div>
+    <div class="btl-step">
+      <div class="btl-step-num"></div>
+      <div class="btl-step-body">
+        <h4>La reacción — El contenido</h4>
+        <p>Un fotógrafo/camarógrafo captura la reacción del participante al ver su total real. Ese contenido (con autorización) se usa en reels de campaña: expresiones de sorpresa genuinas, sin actuación.</p>
+      </div>
+    </div>
+    <div class="btl-step">
+      <div class="btl-step-num"></div>
+      <div class="btl-step-body">
+        <h4>El ingreso a La Liga</h4>
+        <p>Cada participante recibe un QR de invitación a La Liga del Poquito con su primera racha ya iniciada. El contexto emocional (acaba de ver sus gastos reales) es el mejor momento de conversión posible.</p>
+      </div>
+    </div>
+    <div class="btl-step">
+      <div class="btl-step-num"></div>
+      <div class="btl-step-body">
+        <h4>El ranking del campus</h4>
+        <p>Durante una semana después del evento, un ranking de La Liga aparece en pantallas del campus (o en historias de los perfiles de PliP) mostrando quién del evento lleva mejor racha. Genera conversación orgánica.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ ESTRATEGIA DE MEDIOS ════ -->
+  <p class="section-number" style="margin-top: 60px;">3.2 Estrategia de medios</p>
+  <div class="section-divider"></div>
+
+  <div class="phase-grid">
+    <div class="phase-col">
+      <div class="phase-num">Fase 01</div>
+      <div class="phase-name">Revelación</div>
+      <div class="phase-weeks">Semanas 1–4</div>
+      <ul class="phase-channels">
+        <li>TikTok (videos orgánicos del Stand)</li>
+        <li>Instagram Reels + Carruseles</li>
+        <li>OOH universitaria</li>
+        <li>Activaciones BTL campus</li>
+      </ul>
+    </div>
+    <div class="phase-col active">
+      <div class="phase-num">Fase 02</div>
+      <div class="phase-name">Identificación</div>
+      <div class="phase-weeks">Semanas 5–8</div>
+      <ul class="phase-channels">
+        <li>Pauta Meta (retargeting por interés)</li>
+        <li>Video principal en YouTube pre-roll</li>
+        <li>Influencers financieros jóvenes</li>
+        <li>Contenido UGC Liga del Poquito</li>
+        <li>Stories interactivas con encuestas</li>
+      </ul>
+    </div>
+    <div class="phase-col">
+      <div class="phase-num">Fase 03</div>
+      <div class="phase-name">Acción</div>
+      <div class="phase-weeks">Semanas 9–12</div>
+      <ul class="phase-channels">
+        <li>Google UAC (Universal App Campaign)</li>
+        <li>Pauta de conversión Meta</li>
+        <li>Ranking ciudad / premiación Liga</li>
+        <li>PR digital — resultados del mes</li>
+        <li>Email / push a usuarios existentes</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px; max-width: 720px; font-size: 13px; color: var(--plip-text-muted);">La gamificación entra en cada fase: en Revelación genera contenido orgánico; en Identificación alimenta la conversación social; en Acción crea urgencia de descarga al ver el ranking y los premios reales.</p>
+
+</div>
+
+<!-- ═══════════════════════════════════════ SECCIÓN 4 ══ -->
+<div id="s4" class="dark-section">
+  <div style="max-width:960px; margin:0 auto; padding: 0 40px;">
+    <p class="section-number">Sección 04 — 25%</p>
+    <h2 class="section-title">Medición y<br>Resultados Esperados</h2>
+  </div>
+</div>
+
+<div class="page">
+
+  <p class="section-number">4.1 KPIs propuestos</p>
+  <div class="section-divider"></div>
+
+  <table class="kpi-table">
+    <tr>
+      <th>KPI</th>
+      <th>Meta</th>
+      <th>Plazo</th>
+      <th>Cómo se mide</th>
+    </tr>
+    <tr>
+      <td>Descargas de la app</td>
+      <td><span class="kpi-tag">+30%</span></td>
+      <td>3 meses</td>
+      <td>App Store Connect / Play Console, comparativo vs periodo anterior</td>
+    </tr>
+    <tr>
+      <td>Costo por adquisición (CPA)</td>
+      <td><span class="kpi-tag">−15%</span></td>
+      <td>3 meses</td>
+      <td>Meta Ads Manager + Google Analytics — inversión total / descargas</td>
+    </tr>
+    <tr>
+      <td>Tasa conversión impacto→descarga</td>
+      <td><span class="kpi-tag">+20%</span></td>
+      <td>3 meses</td>
+      <td>Píxel Meta + UTM tracking por pieza creativa</td>
+    </tr>
+    <tr>
+      <td>Reconocimiento de marca (awareness)</td>
+      <td><span class="kpi-tag">+25%</span></td>
+      <td>3 meses</td>
+      <td>Brand lift survey en Meta / encuesta en redes (antes y después)</td>
+    </tr>
+    <tr>
+      <td>Engagement rate en redes</td>
+      <td><span class="kpi-tag">>5%</span></td>
+      <td>Semanal</td>
+      <td>Interacciones / alcance total por pieza — dashboard semanal</td>
+    </tr>
+    <tr>
+      <td>Usuarios activos en La Liga</td>
+      <td><span class="kpi-tag">10.000</span></td>
+      <td>Mes 2</td>
+      <td>Backend PliP — usuarios con al menos 1 semana activa en Liga</td>
+    </tr>
+    <tr>
+      <td>Alcance total de campaña</td>
+      <td><span class="kpi-tag">2M impactos</span></td>
+      <td>3 meses</td>
+      <td>Consolidado Meta + TikTok + YouTube + OOH estimado</td>
+    </tr>
+    <tr>
+      <td>Contenido UGC generado</td>
+      <td><span class="kpi-tag">+500 posts</span></td>
+      <td>3 meses</td>
+      <td>Monitoreo de #LigaDelPoquito en TikTok e Instagram</td>
+    </tr>
+  </table>
+
+  <p class="section-number" style="margin-top: 60px;">4.2 Cronograma de implementación</p>
+  <div class="section-divider"></div>
+
+  <div style="margin: 24px 0;">
+    <div class="timeline-label" style="margin-bottom: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--plip-green); font-weight: 700;">Fase 1 — Revelación (Semanas 1–4)</div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Producción contenido BTL + vídeo</span><span>Sem 1–2</span></div>
+      <div class="crono-track"><div class="crono-fill" style="width: 50%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Activaciones BTL en campus</span><span>Sem 2–4</span></div>
+      <div class="crono-track"><div class="crono-fill" style="width: 75%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Publicación OOH</span><span>Sem 3–4</span></div>
+      <div class="crono-track"><div class="crono-fill" style="width: 50%;"></div></div>
+    </div>
+
+    <div class="timeline-label" style="margin: 24px 0 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--plip-accent); font-weight: 700;">Fase 2 — Identificación (Semanas 5–8)</div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Lanzamiento pauta Meta + YouTube</span><span>Sem 5–8</span></div>
+      <div class="crono-track"><div class="crono-fill phase2" style="width: 100%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Activación influencers</span><span>Sem 5–7</span></div>
+      <div class="crono-track"><div class="crono-fill phase2" style="width: 75%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Primer ranking La Liga (publicación)</span><span>Sem 7–8</span></div>
+      <div class="crono-track"><div class="crono-fill phase2" style="width: 50%;"></div></div>
+    </div>
+
+    <div class="timeline-label" style="margin: 24px 0 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--plip-accent2); font-weight: 700;">Fase 3 — Acción (Semanas 9–12)</div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Google UAC + pauta conversión</span><span>Sem 9–12</span></div>
+      <div class="crono-track"><div class="crono-fill phase3" style="width: 100%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>Premiación Liga del Poquito (mes 1)</span><span>Sem 10</span></div>
+      <div class="crono-track"><div class="crono-fill phase3" style="width: 25%;"></div></div>
+    </div>
+    <div class="crono-bar">
+      <div class="crono-label"><span>PR digital + reporte de resultados</span><span>Sem 12</span></div>
+      <div class="crono-track"><div class="crono-fill phase3" style="width: 25%; margin-left: 75%;"></div></div>
+    </div>
+  </div>
+
+  <p class="section-number" style="margin-top: 60px;">4.3 Distribución presupuestal</p>
+  <div class="section-divider"></div>
+
+  <div class="budget-grid">
+    <div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: var(--plip-green);"></div>
+        <div class="budget-name">Pauta digital (Meta, Google, TikTok)</div>
+        <div class="budget-pct">40%</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: var(--plip-accent);"></div>
+        <div class="budget-name">Producción de contenido y video</div>
+        <div class="budget-pct">20%</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: var(--plip-accent2);"></div>
+        <div class="budget-name">OOH (impresión y ubicaciones)</div>
+        <div class="budget-pct">15%</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: #A0A0FF;"></div>
+        <div class="budget-name">Activaciones BTL y logística</div>
+        <div class="budget-pct">12%</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: #9EC5DE;"></div>
+        <div class="budget-name">Influencers y creadores</div>
+        <div class="budget-pct">8%</div>
+      </div>
+      <div class="budget-item">
+        <div class="budget-dot" style="background: #C8956C;"></div>
+        <div class="budget-name">Premios Liga + contingencia</div>
+        <div class="budget-pct">5%</div>
+      </div>
+    </div>
+    <div style="background: var(--plip-dark2); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,194,124,0.2);">
+      <h3 style="font-family: var(--display); font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px;">Justificación de la distribución</h3>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 12px;">El 40% en pauta digital refleja el canal de mayor conversión medible. Sin embargo, la inversión en producción (20%) y BTL (12%) es intencionalmente alta porque el contenido generado en esas activaciones alimenta la pauta orgánica y reduce CPA a largo plazo.</p>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7;">Los premios de La Liga (incluidos en el 5% de contingencia) son críticos para la credibilidad del sistema gamificado — si no hay recompensas reales, la Liga no genera tracción. Este costo es en realidad una inversión en retención y viralidad.</p>
+    </div>
+  </div>
+
+  <p class="section-number" style="margin-top: 60px;">4.4 Justificación de la medición</p>
+  <div class="section-divider"></div>
+
+  <p style="max-width: 720px; margin-bottom: 20px;">La combinación de KPIs propuesta cubre las tres dimensiones críticas de la campaña: crecimiento (descargas, CPA), cultura de marca (awareness, engagement, UGC) y producto (usuarios activos en La Liga). No medir los tres pilares equivale a no entender si la campaña funcionó como comunicación o como negocio.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>KPIs de crecimiento</h3>
+      <p>Descargas y CPA miden el impacto directo en negocio. Son los KPIs que el cliente necesita para justificar la inversión y que permiten optimizar la pauta semana a semana.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>KPIs de cultura</h3>
+      <p>Awareness, engagement y UGC miden si la campaña generó conversación real. Si los jóvenes comparten contenido de La Liga y usan el hashtag, la marca se construye de forma orgánica — reduciendo CPA a futuro.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>KPIs de producto</h3>
+      <p>Usuarios activos en La Liga miden si la gamificación funciona como retención. Una descarga sin uso no cumple el objetivo estratégico. La Liga del Poquito existe para crear hábito, no solo para adquirir usuarios.</p>
+    </div>
+  </div>
+
+  <div class="insight-block" style="margin-top: 40px;">
+    <div class="quote">"Una campaña que solo genera descargas sin retención es publicidad. Una que genera hábito es marca."</div>
+    <div class="attribution">Criterio estratégico — Agencia MAGIA</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <p>Campaña <span>La Liga del Poquito</span> — PliP × Agencia MAGIA</p>
+  <p style="margin-top: 8px;">Boom Creativo 2026 · Politécnico Grancolombiano · Entrega 29/04/2026</p>
+  <p style="margin-top: 4px; font-size: 11px; opacity: 0.5;">"Siempre es poquito... hasta que ya no hay nada."</p>
+</footer>
+
+</body>
+</html>
